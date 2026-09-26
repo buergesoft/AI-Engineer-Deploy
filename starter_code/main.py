@@ -5,7 +5,7 @@ import dotenv
 import uvicorn
 from langchain_core.documents import Document
 from langchain_core.messages import HumanMessage, AIMessage, trim_messages
-from langchain_core.prompts import MessagesPlaceholder, ChatPromptTemplate, PromptTemplate
+from langchain_core.prompts import MessagesPlaceholder, ChatPromptTemplate
 from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_qdrant import QdrantVectorStore
