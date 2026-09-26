@@ -103,7 +103,7 @@ def embed_documents(json_path: str) -> QdrantVectorStore | list:
 
     try:
         collection_name = "smartphones"
-        qdrant_client = QdrantClient("http://localhost:6333")
+        qdrant_client = QdrantClient(url=os.getenv("QDRANT_URL"), api_key=os.getenv("QDRANT_API_KEY"))
 
         collection_exists = qdrant_client.collection_exists(collection_name=collection_name)
         if not collection_exists:
@@ -128,6 +128,7 @@ def embed_documents(json_path: str) -> QdrantVectorStore | list:
         # no need to create a vector store every time
         else:
             qdrant_store = QdrantVectorStore.from_existing_collection(
+                qdrant_client=qdrant_client,
                 embedding=embeddings_model,
                 collection_name=collection_name,
             )
